@@ -1,0 +1,89 @@
+.header{
+    height: 100px;
+ }
+input{
+    margin-top: 30px;
+}
+h1{
+    font-size: 30px;
+    letter-spacing: 0px;
+    line-height: 84px;
+    color: #171717;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+.myform{
+    height: 200px;
+}
+p{
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 24px;
+    color: #787878;
+    font-weight: 400;
+    font-family: "Nunito Sans";
+}
+span{
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 36px;
+    color: #171717;
+    text-decoration: underline;
+    font-family: "Nunito Sans";
+}
+.p__cont-strong{
+    font-weight: 700;
+}
+.my__button{
+    padding: 0;
+    width: 180px;
+    height: 54px;
+    background-color: #10c9c3;
+    border: 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+}
+li{
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #191919;
+    font-weight: 500;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+}
+.google__map{
+        background-color: #e0e0e0;
+        height: 400px;
+        margin-top: 10px;
+}
+
+.footer{
+    height: 250px;
+    margin: 0;
+    background-color: #141414;
+    
+}
+
+.footer__text{
+    font-size: 15px;
+    letter-spacing: 0px;
+    line-height: 24px;
+    color: #bcbcbc;
+    font-weight: 400;
+    font-family: "Nunito Sans";
+}
+h3{
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+h3+p{
+    margin-top: 28px;
+}
