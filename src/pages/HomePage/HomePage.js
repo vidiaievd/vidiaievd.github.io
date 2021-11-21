@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
+
 export const HomePage = () => {
 	return (
 		<div>
-			<span>HomePage</span>
+			<p>HomePage</p>
+			<Link to="/employees">Employees Page</Link>
 		</div>
 	)
 }
