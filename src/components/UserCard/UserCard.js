@@ -25,22 +25,24 @@ export const UserCard = ({ employee }) => {
                 {`${employee.firstName} ${employee.lastName}`}
             </h4>
             <input
+                id='not-active'
                 type="radio"
                 name={employee.id}
                 value="false"
                 defaultChecked={!isChecked}
                 onChange={handleDelDB}
             />
-            not active
+            <label htmlFor="not-active">not active</label>
             <br />
             <input
+                id='active'
                 type="radio"
                 name={employee.id}
                 value="true"
                 onChange={handleSetDB}
                 defaultChecked={isChecked}
             />
-            active
+            <label htmlFor="active">active</label>
         </div>
     );
 };
