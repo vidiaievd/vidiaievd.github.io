@@ -69,15 +69,17 @@ export const EmployeesPage = () => {
 					monthList.map((month) => (
 						<div key={shortid.generate()}>
 							<h5>{month}</h5>
-							{birthdaysList[month]?.length ?
-								birthdaysList[month].map(
-									employee => <li key={shortid.generate()}>
-										{`${employee.lastName} ${employee.firstName} - ${dayOfBirthday(employee.dob)}`}
-									</li>
-								)
-								:
-								<p>No Employees</p>
-							}
+							<ul>
+								{birthdaysList[month]?.length ?
+									birthdaysList[month].map(
+										employee => <li key={shortid.generate()}>
+											{`${employee.lastName} ${employee.firstName} - ${dayOfBirthday(employee.dob)}`}
+										</li>
+									)
+									:
+									<p>No Employees</p>
+								}
+							</ul>
 						</div>
 					))
 					:
