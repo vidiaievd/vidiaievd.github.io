@@ -1,0 +1,50 @@
+.backdrop {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(black, 0.7);
+}
+
+.modal {
+	padding: 1.5rem;
+	background-color: #fff;
+	margin: auto;
+	border-radius: 10px;
+
+	h1 {
+		margin: 0;
+		padding: 0;
+		color: #b20000;
+		font-size: 2rem;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
+	}
+
+	hr {
+		margin: 1rem 0;
+		padding: 0;
+		height: 2px;
+		border: none;
+		background: linear-gradient(45deg, #b20000, #ddd);
+	}
+	.error-button {
+		text-decoration: none;
+		border-radius: 10px;
+		height: 2rem;
+		background-color:  rgba(black, 0.7);
+		color: #fff;
+		padding: .5rem;
+		font-size: 1rem;
+		text-transform: uppercase;
+		box-shadow: 0 4px 2px -2px gray;
+	}
+}

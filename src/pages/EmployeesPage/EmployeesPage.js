@@ -5,7 +5,7 @@ import shortid from 'shortid';
 import { getEmployees, selectEmployees } from "../../store/employeesSlice";
 import { selectBirthdays } from "../../store/birthdaySlice";
 
-import { UserCard } from "../../components";
+import { UserCard, Loader, Error } from "../../components";
 
 import { alphabet, setMonthList, birthdayListByMonth, parseOfDate, employeesByAlphabet } from "../../utils";
 
@@ -19,6 +19,8 @@ const monthList = setMonthList(11);
 
 export const EmployeesPage = () => {
 	const dispatch = useDispatch();
+	const isLoading = useSelector(({ employees }) => employees.loading);
+	const isError = useSelector(({ employees }) => employees.error);
 	const birthdays = useSelector(selectBirthdays);
 	const employees = useSelector(selectEmployees);
 	const birthdaysList = birthdayListByMonth(birthdays);
@@ -52,8 +54,12 @@ export const EmployeesPage = () => {
 		dispatch(getEmployees());
 	}, [dispatch]);
 
-	if (!employees.length) {
-		return null
+	if (isLoading) {
+		return <Loader />
+	}
+
+	if (isError) {
+		return <Error message={isError} />
 	}
 
 	return (
