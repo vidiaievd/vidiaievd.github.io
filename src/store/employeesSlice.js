@@ -1,8 +1,4 @@
-import {
-    createEntityAdapter,
-    createSlice,
-    createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getEmployees = createAsyncThunk(
@@ -19,7 +15,7 @@ export const getEmployees = createAsyncThunk(
 );
 
 const employeesAdapter = createEntityAdapter({
-    sortComparer: (a, b) => (a.lastName > b.lastName ? 1 : -1),
+    sortComparer: (a, b) => (a.firstName > b.firstName ? 1 : -1),
 });
 
 export const { selectAll: selectEmployees, selectById: selectEmployeeById } =
@@ -27,10 +23,23 @@ export const { selectAll: selectEmployees, selectById: selectEmployeeById } =
 
 const getEmployeesSlice = createSlice({
     name: "employees",
-    initialState: employeesAdapter.getInitialState(),
+    initialState: employeesAdapter.getInitialState({
+        loading: false,
+        error: null,
+    }),
     reducers: {},
     extraReducers: {
-        [getEmployees.fulfilled]: employeesAdapter.setAll,
+        [getEmployees.fulfilled](state, {payload}) {
+            employeesAdapter.setAll(state, payload);
+            state.loading = false;
+        },
+        [getEmployees.pending](state) {
+            state.loading = true;
+        },
+        [getEmployees.rejected](state, action) {
+            state.error = action.error.message;
+            state.loading = false;
+        },
     },
 });
 
