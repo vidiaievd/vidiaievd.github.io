@@ -9,7 +9,7 @@ import { UserCard, Loader, Error } from "../../components";
 
 import { alphabet, setMonthList, birthdayListByMonth, parseOfDate, employeesByAlphabet } from "../../utils";
 
-import "./style.scss";
+import styles from "./Employees.module.scss";
 
 const dayOfBirthday = (date) =>
 	`${parseOfDate(date).day} ${parseOfDate(date).month}, ${parseOfDate(date).year
@@ -28,20 +28,20 @@ export const EmployeesPage = () => {
 	const employeesWithLetter = employeesByAlphabet(employees);
 
 	const memoizedEmployeesList = useMemo(() => (
-		<div className="employees-list">
+		<div className={styles.cardsWrapper}>
 			{alphabet.map(letter => (
 				employeesWithLetter[letter]
 					? (
-						<div className="letter-card" key={shortid.generate()}>
-							<h3>{letter}</h3>
+						<div className={styles.letterWrapper} key={shortid.generate()}>
+							<h3 className={styles.letter}>{letter}</h3>
 							{employeesWithLetter[letter].map(employeeData => (
 								<UserCard key={shortid.generate()} employee={employeeData} />
 							))}
 						</div>
 					) : (
-						<div className="letter-card" key={shortid.generate()}>
-							<h3>{letter}</h3>
-							<div className="empty-card">
+						<div className={styles.letterWrapper} key={shortid.generate()}>
+							<h3 className={styles.letter}>{letter}</h3>
+							<div className={styles.emptyCard}>
 								<h4>No Employees</h4>
 							</div>
 						</div>
@@ -63,27 +63,30 @@ export const EmployeesPage = () => {
 	}
 
 	return (
-		<div className="content">
-			<div className="user-list">
-				<h2>Employees</h2>
+		<article className={styles.article}>
+			<section className={styles.employeesTitle}>
+				<h1 className={styles.title}>Employees</h1>
+			</section>
+			<section className={styles.employeesList}>
 				{memoizedEmployeesList}
-			</div>
-			<div className="birthday-list">
-				<h2 className="employees-birthday">Employees birthday</h2>
-				<hr />
+			</section>
+			<section className={styles.birthdaysTitle}>
+				<h2 className={styles.title}>Birthdays title</h2>
+			</section>
+			<section className={styles.birthdaysList}>
 				{Object.keys(birthdaysList).length ?
 					monthList.map((month) => (
-						<div key={shortid.generate()}>
-							<h5>{month}</h5>
+						<div key={shortid.generate()} className={styles.monthWrapper}>
+							<h3 className={styles.month}>{month}</h3>
 							<ul>
 								{birthdaysList[month]?.length ?
 									birthdaysList[month].map(
-										employee => <li key={shortid.generate()}>
+										employee => <li key={shortid.generate()} className={styles.monthItem}>
 											{`${employee.lastName} ${employee.firstName} - ${dayOfBirthday(employee.dob)}`}
 										</li>
 									)
 									:
-									<p>No Employees</p>
+									<li className={styles.monthItem}>No Employees</li>
 								}
 							</ul>
 						</div>
@@ -91,8 +94,8 @@ export const EmployeesPage = () => {
 					:
 					<div>Employees List is empty</div>
 				}
-			</div>
-		</div>
+			</section>
+		</article>
 	);
 };
 

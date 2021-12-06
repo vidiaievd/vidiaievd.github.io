@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import styles from './home.module.scss';
 
 export const HomePage = () => {
 	return (
-		<div>
-			<p>HomePage</p>
-			<Link to="/employees">Employees Page</Link>
-		</div>
+		<article className={styles.article}>
+			<section className={styles.section}>
+				<h1 className={styles.h1}>Test task</h1>
+				<p className={styles.p}>{'Yalantis\nReact School'}</p>
+			</section>
+		</article>
 	)
 }
