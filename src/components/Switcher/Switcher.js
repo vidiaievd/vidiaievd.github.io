@@ -7,7 +7,7 @@ export const Switcher = ({ changeTheme }) => {
 	}
 	return (
 		<StyledSwitcher onChange={handleChangeLanguage}>
-			{Object.keys(THEME_NAME).map((theme, i) => (
+			{Object.keys(THEME_NAME).map(theme => (
 				<option value={THEME_NAME[theme]} key={THEME_NAME[theme]}>{THEME_NAME[theme]}</option>
 			))}
 		</StyledSwitcher>
