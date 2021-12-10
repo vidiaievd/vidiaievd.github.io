@@ -1,11 +1,11 @@
 import PT from "prop-types";
+// import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-
-import "./style.scss";
-
 import { addBirthday, removeBirthday, selectIds } from "../../store/birthdaySlice";
+import {StyledUserCard, StyledTitleCard, StyledLabel} from './styles';
 
 export const UserCard = ({ employee }) => {
+    // const [animation, setAnimation] = useState(false);
     const dispatch = useDispatch();
     const Ids = useSelector(selectIds);
 
@@ -20,30 +20,36 @@ export const UserCard = ({ employee }) => {
     const isChecked = (Ids.includes(employee.id));
 
     return (
-        <div className={`user-card ${isChecked ? "active" : ""}`}>
-            <h4 className={`user-card__name ${isChecked ? "active" : ""}`}>
+        <StyledUserCard
+            isCheck={isChecked}
+            // onClick={() => setAnimation(true)}
+            // onAnimationEnd={() => setAnimation(false)}
+            // animation={animation}
+        >
+
+            <StyledTitleCard isCheck={isChecked}>
                 {`${employee.firstName} ${employee.lastName}`}
-            </h4>
+            </StyledTitleCard>
             <input
-                id='not-active'
+                id={`notActive_${employee.id}`}
                 type="radio"
                 name={employee.id}
                 value="false"
                 defaultChecked={!isChecked}
                 onChange={handleDelDB}
             />
-            <label htmlFor="not-active">not active</label>
+            <StyledLabel htmlFor={`notActive_${employee.id}`}>not active</StyledLabel>
             <br />
             <input
-                id='active'
+                id={`active_${employee.id}`}
                 type="radio"
                 name={employee.id}
                 value="true"
                 onChange={handleSetDB}
                 defaultChecked={isChecked}
             />
-            <label htmlFor="active">active</label>
-        </div>
+            <StyledLabel htmlFor={`active_${employee.id}`}>active</StyledLabel>
+        </StyledUserCard>
     );
 };
 

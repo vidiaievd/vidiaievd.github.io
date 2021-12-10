@@ -1,12 +1,11 @@
-import styles from './home.module.scss';
+// import styles from './home.module.scss';
+import {StyledWrapper, StyledTitle, StyledParagraph} from './styles'
 
 export const HomePage = () => {
 	return (
-		<article className={styles.article}>
-			<section className={styles.section}>
-				<h1 className={styles.h1}>Test task</h1>
-				<p className={styles.p}>{'Yalantis\nReact School'}</p>
-			</section>
-		</article>
+		<StyledWrapper>
+			<StyledTitle>Test task</StyledTitle>
+			<StyledParagraph>{'Yalantis\nReact School'}</StyledParagraph>
+		</StyledWrapper>
 	)
 }

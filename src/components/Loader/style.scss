@@ -3,7 +3,7 @@
 }
 
 .wrapper-loader{
-	position: absolute;
+	position: relative;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -11,7 +11,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: rgba(0, 0, 0, 0.3);
 }
 .lds-roller {
 	display: inline-block;

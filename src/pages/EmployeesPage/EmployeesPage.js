@@ -1,15 +1,25 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shortid from 'shortid';
-
 import { getEmployees, selectEmployees } from "../../store/employeesSlice";
 import { selectBirthdays } from "../../store/birthdaySlice";
-
 import { UserCard, Loader, Error } from "../../components";
-
 import { alphabet, setMonthList, birthdayListByMonth, parseOfDate, employeesByAlphabet } from "../../utils";
-
-import styles from "./Employees.module.scss";
+import {
+	StyledWrapperPage, 
+	StyledEmployeesTitle, 
+	StyledEmployeesList, 
+	StyledBirthdaysTitle, 
+	StyledBirthdaysList, 
+	StyledTitle,
+	StyledMonthList,
+	StyledMonthItem,
+	StyledTitleItem,
+	StyledWrapperCards,
+	StyledWrapperLetterList,
+	StyledTitleLetter,
+	StyledEmptyCard,
+} from './styles'
 
 const dayOfBirthday = (date) =>
 	`${parseOfDate(date).day} ${parseOfDate(date).month}, ${parseOfDate(date).year
@@ -28,26 +38,26 @@ export const EmployeesPage = () => {
 	const employeesWithLetter = employeesByAlphabet(employees);
 
 	const memoizedEmployeesList = useMemo(() => (
-		<div className={styles.cardsWrapper}>
+		<StyledWrapperCards>
 			{alphabet.map(letter => (
 				employeesWithLetter[letter]
 					? (
-						<div className={styles.letterWrapper} key={shortid.generate()}>
-							<h3 className={styles.letter}>{letter}</h3>
+						<StyledWrapperLetterList key={shortid.generate()}>
+							<StyledTitleLetter>{letter}</StyledTitleLetter>
 							{employeesWithLetter[letter].map(employeeData => (
-								<UserCard key={shortid.generate()} employee={employeeData} />
+								<UserCard key={shortid.generate()} employee={employeeData}/>
 							))}
-						</div>
+						</StyledWrapperLetterList>
 					) : (
-						<div className={styles.letterWrapper} key={shortid.generate()}>
-							<h3 className={styles.letter}>{letter}</h3>
-							<div className={styles.emptyCard}>
-								<h4>No Employees</h4>
-							</div>
-						</div>
+						<StyledWrapperLetterList key={shortid.generate()}>
+							<StyledTitleLetter>{letter}</StyledTitleLetter>
+							<StyledEmptyCard>
+								<StyledTitleItem as="h4" card>No Employees</StyledTitleItem>
+							</StyledEmptyCard>
+						</StyledWrapperLetterList>
 					)
 			))}
-		</div>
+		</StyledWrapperCards>
 	), [employees]);
 
 	useEffect(() => {
@@ -63,39 +73,39 @@ export const EmployeesPage = () => {
 	}
 
 	return (
-		<article className={styles.article}>
-			<section className={styles.employeesTitle}>
-				<h1 className={styles.title}>Employees</h1>
-			</section>
-			<section className={styles.employeesList}>
+		<StyledWrapperPage>
+			<StyledEmployeesTitle>
+				<StyledTitle>Employees</StyledTitle>
+			</StyledEmployeesTitle>
+			<StyledEmployeesList>
 				{memoizedEmployeesList}
-			</section>
-			<section className={styles.birthdaysTitle}>
-				<h2 className={styles.title}>Birthdays title</h2>
-			</section>
-			<section className={styles.birthdaysList}>
+			</StyledEmployeesList>
+			<StyledBirthdaysTitle>
+				<StyledTitle as="h2">Birthdays title</StyledTitle>
+			</StyledBirthdaysTitle>
+			<StyledBirthdaysList>
 				{Object.keys(birthdaysList).length ?
 					monthList.map((month) => (
-						<div key={shortid.generate()} className={styles.monthWrapper}>
-							<h3 className={styles.month}>{month}</h3>
+						<StyledMonthList key={shortid.generate()}>
+							<StyledTitleItem underline>{month}</StyledTitleItem>
 							<ul>
 								{birthdaysList[month]?.length ?
 									birthdaysList[month].map(
-										employee => <li key={shortid.generate()} className={styles.monthItem}>
+										employee => <StyledMonthItem key={shortid.generate()}>
 											{`${employee.lastName} ${employee.firstName} - ${dayOfBirthday(employee.dob)}`}
-										</li>
+										</StyledMonthItem>
 									)
 									:
-									<li className={styles.monthItem}>No Employees</li>
+									<StyledMonthItem>No Employees</StyledMonthItem>
 								}
 							</ul>
-						</div>
+						</StyledMonthList>
 					))
 					:
-					<div>Employees List is empty</div>
+					<StyledTitleItem>Employees List is empty</StyledTitleItem>
 				}
-			</section>
-		</article>
+			</StyledBirthdaysList>
+		</StyledWrapperPage>
 	);
 };
 
