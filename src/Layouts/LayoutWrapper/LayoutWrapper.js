@@ -1,16 +1,16 @@
 import PT from 'prop-types';
-import {Header, Footer} from '../';
+import { Header, Footer } from '../';
 import { StyledLayoutWrapper, StyledWrapperContent } from './styles';
-export const LayoutWrapper = ({ children, changeTheme }) => {
+
+export const LayoutWrapper = ({ children }) => {
 	return (
-		 <StyledLayoutWrapper>
-			<Header changeTheme={changeTheme}/>
+		<StyledLayoutWrapper>
+			<Header />
 			<StyledWrapperContent>
 				{children}
 			</StyledWrapperContent>
 			<Footer />
 		</StyledLayoutWrapper>
-		
 	)
 }
 

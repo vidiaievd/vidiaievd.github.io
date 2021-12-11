@@ -1,0 +1,1 @@
+export { StyledLanguageSwitcher } from './StyledLanguageSwitcher';

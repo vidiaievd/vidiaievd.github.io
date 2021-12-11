@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shortid from 'shortid';
+import t from '../../i18n/translate';
 import { getEmployees, selectEmployees } from "../../store/employeesSlice";
 import { selectBirthdays } from "../../store/birthdaySlice";
 import { UserCard, Loader, Error } from "../../components";
@@ -52,7 +53,7 @@ export const EmployeesPage = () => {
 						<StyledWrapperLetterList key={shortid.generate()}>
 							<StyledTitleLetter>{letter}</StyledTitleLetter>
 							<StyledEmptyCard>
-								<StyledTitleItem as="h4" card>No Employees</StyledTitleItem>
+								<StyledTitleItem as="h4" card>{t('no-employees')}</StyledTitleItem>
 							</StyledEmptyCard>
 						</StyledWrapperLetterList>
 					)
@@ -75,13 +76,13 @@ export const EmployeesPage = () => {
 	return (
 		<StyledWrapperPage>
 			<StyledEmployeesTitle>
-				<StyledTitle>Employees</StyledTitle>
+				<StyledTitle>{t('employees-title')}</StyledTitle>
 			</StyledEmployeesTitle>
 			<StyledEmployeesList>
 				{memoizedEmployeesList}
 			</StyledEmployeesList>
 			<StyledBirthdaysTitle>
-				<StyledTitle as="h2">Birthdays title</StyledTitle>
+				<StyledTitle as="h2">{t('birthdays-title')}</StyledTitle>
 			</StyledBirthdaysTitle>
 			<StyledBirthdaysList>
 				{Object.keys(birthdaysList).length ?
@@ -96,13 +97,13 @@ export const EmployeesPage = () => {
 										</StyledMonthItem>
 									)
 									:
-									<StyledMonthItem>No Employees</StyledMonthItem>
+									<StyledMonthItem>{t('no-employees')}</StyledMonthItem>
 								}
 							</ul>
 						</StyledMonthList>
 					))
 					:
-					<StyledTitleItem>Employees List is empty</StyledTitleItem>
+					<StyledTitleItem>{t('list-empty')}</StyledTitleItem>
 				}
 			</StyledBirthdaysList>
 		</StyledWrapperPage>
