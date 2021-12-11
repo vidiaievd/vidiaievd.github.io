@@ -1,4 +1,5 @@
 import {NavLink} from 'react-router-dom';
+import t from '../../i18n/translate';
 import {Logo, Link, Switcher, LanguageSwitcher} from '../../components';
 import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkWrapper} from './styles'
 
@@ -12,23 +13,23 @@ export const Header = ({ changeTheme }) => {
 			id: '1',
 			url: '/',
 			exact: true,
-			title: 'Home'
+			title: t('home-menu'),
 		},
 		{
 			id: '2',
 			url: '/employees',
 			exact: true,
-			title: 'Employees',
+			title: t('employees-menu'),
 		},
 		{
 			id: '3',
 			url: '/profile',
 			exact: true,
-			title: 'Profile'
+			title: t('profile-menu'),
 		},
 		{
 			id: '4',
-			title: 'Logout'
+			title: t('logout-menu'),
 		}
 	];
 
@@ -37,18 +38,18 @@ export const Header = ({ changeTheme }) => {
 			id: '1',
 			url: '/',
 			exact: true,
-			title: 'Home'
+			title: t('home-menu'),
 		},
 		{
 			id: '2',
 			url: '/employees',
 			exact: true,
-			title: 'Employees',
+			title: t('employees-menu'),
 		},
 		{
 			id: '5',
 			url: '/auth',
-			title: 'Auth'
+			title: t('auth-menu'),
 		}
 	];
 

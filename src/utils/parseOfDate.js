@@ -1,4 +1,5 @@
-import { nameOfMonth } from './nameOfMonth'
+import { nameOfMonth } from './nameOfMonth';
+
 export const parseOfDate = (date) => {
     const _date = new Date(date);
     _date.day = _date.getDate();

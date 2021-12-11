@@ -1,11 +1,12 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shortid from 'shortid';
+import { FormattedDate } from 'react-intl';
 import t from '../../i18n/translate';
 import { getEmployees, selectEmployees } from "../../store/employeesSlice";
 import { selectBirthdays } from "../../store/birthdaySlice";
 import { UserCard, Loader, Error } from "../../components";
-import { alphabet, setMonthList, birthdayListByMonth, parseOfDate, employeesByAlphabet } from "../../utils";
+import { alphabet, setMonthList, birthdayListByMonth, employeesByAlphabet } from "../../utils";
 import {
 	StyledWrapperPage, 
 	StyledEmployeesTitle, 
@@ -21,10 +22,6 @@ import {
 	StyledTitleLetter,
 	StyledEmptyCard,
 } from './styles'
-
-const dayOfBirthday = (date) =>
-	`${parseOfDate(date).day} ${parseOfDate(date).month}, ${parseOfDate(date).year
-	} year`;
 
 const monthList = setMonthList(11);
 
@@ -88,12 +85,15 @@ export const EmployeesPage = () => {
 				{Object.keys(birthdaysList).length ?
 					monthList.map((month) => (
 						<StyledMonthList key={shortid.generate()}>
-							<StyledTitleItem underline>{month}</StyledTitleItem>
+							<StyledTitleItem underline>{t(month.toLowerCase())}</StyledTitleItem>
 							<ul>
 								{birthdaysList[month]?.length ?
 									birthdaysList[month].map(
 										employee => <StyledMonthItem key={shortid.generate()}>
-											{`${employee.lastName} ${employee.firstName} - ${dayOfBirthday(employee.dob)}`}
+											{`${employee.lastName} ${employee.firstName} - `}
+											<FormattedDate value={employee.dob}	day='2-digit'/> {' '}
+											<FormattedDate value={employee.dob}	month='long'/> {', '}
+											<FormattedDate value={employee.dob} year='numeric' />{t('year')}
 										</StyledMonthItem>
 									)
 									:
