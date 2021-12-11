@@ -1,10 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import employees from "../usersList/store/EmployeesSlice";
-import birthday from "../usersList/store/BirthdaySlice";
+import employees from './employeesSlice'
+import birthday from './birthdaySlice';
+import sitting from './sittingSlice';
 
 const reducer = combineReducers({
   employees,
   birthday,
+  sitting,
 });
 
 export default reducer;

@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom';
-import {Logo, Link, Switcher} from '../../components';
+import {Logo, Link, Switcher, LanguageSwitcher} from '../../components';
 import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkWrapper} from './styles'
 
 export const Header = ({ changeTheme }) => {
@@ -59,6 +59,7 @@ export const Header = ({ changeTheme }) => {
 			<StyledWrapperHeader>
 				<Logo />
 				<StyledNavBar>
+					<LanguageSwitcher />
 					<Switcher changeTheme={changeTheme} />
 					{links.map(({ id, url, exact, title }) => (
 						<StyledLinkWrapper key={id}>
