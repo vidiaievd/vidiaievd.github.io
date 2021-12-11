@@ -1,11 +1,12 @@
-// import styles from './home.module.scss';
+import t from '../../i18n/translate';
 import {StyledWrapper, StyledTitle, StyledParagraph} from './styles'
 
 export const HomePage = () => {
 	return (
 		<StyledWrapper>
-			<StyledTitle>Test task</StyledTitle>
-			<StyledParagraph>{'Yalantis\nReact School'}</StyledParagraph>
+			<StyledTitle>{t('test-task')}</StyledTitle>
+			<StyledParagraph>{t('company-name')}</StyledParagraph>
+			<StyledParagraph>{t('react')} {t('school')}</StyledParagraph>
 		</StyledWrapper>
 	)
 }

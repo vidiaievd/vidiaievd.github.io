@@ -7,5 +7,35 @@ export default {
 		'birthdays-title': 'Employees birthday',
 		'no-employees': 'No Employees',
 		'list-empty': 'Employees List is empty',
+
+		'active': 'active',
+		'not-active': 'not active',
+
+		'home-menu': 'Home',
+		'employees-menu': 'Employees',
+		'profile-menu': 'Profile',
+		'auth-menu': 'Auth',
+		'logout-menu': 'Logout',
+
+		'footer-text': 'All Rights Reserved',
+
+		'test-task': 'Test task',
+		'company-name': 'Yalantis',
+		'react': 'React',
+		'school': 'School',
+
+		'january': 'January',
+		'february': 'February',
+		'march': 'March',
+		'april': 'April',
+		'may': 'May',
+		'june': 'June',
+		'july': 'July',
+		'august': 'August',
+		'september': 'September',
+		'october': 'October',
+		'november': 'November',
+		'december': 'December',
+		'year': ' year',
 	}
 }

@@ -1,6 +1,7 @@
 import PT from "prop-types";
 // import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import t from '../../i18n/translate';
 import { addBirthday, removeBirthday, selectIds } from "../../store/birthdaySlice";
 import {StyledUserCard, StyledTitleCard, StyledLabel} from './styles';
 
@@ -38,7 +39,7 @@ export const UserCard = ({ employee }) => {
                 defaultChecked={!isChecked}
                 onChange={handleDelDB}
             />
-            <StyledLabel htmlFor={`notActive_${employee.id}`}>not active</StyledLabel>
+            <StyledLabel htmlFor={`notActive_${employee.id}`}>{t('not-active')}</StyledLabel>
             <br />
             <input
                 id={`active_${employee.id}`}
@@ -48,7 +49,7 @@ export const UserCard = ({ employee }) => {
                 onChange={handleSetDB}
                 defaultChecked={isChecked}
             />
-            <StyledLabel htmlFor={`active_${employee.id}`}>active</StyledLabel>
+            <StyledLabel htmlFor={`active_${employee.id}`}>{t('active')}</StyledLabel>
         </StyledUserCard>
     );
 };
