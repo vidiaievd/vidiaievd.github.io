@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const StyledFooter = styled.footer`
+	position: relative;
 	display: flex;
 	height: 4rem;
 	flex-direction: row;

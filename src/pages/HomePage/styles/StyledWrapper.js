@@ -10,6 +10,7 @@ export const StyledWrapper = styled.article`
 	align-items: flex-end;
 	color: ${props => props.theme.fontColor.secondary};
 	background: center / cover no-repeat url(${img});
+	overflow: hidden;
 
 	&::before {
 		content: '';
