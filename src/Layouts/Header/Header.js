@@ -5,33 +5,8 @@ import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkW
 
 export const Header = ({ changeTheme }) => {
 	const handleLogout = () => {
-
+		console.log('[ logout :) ]')
 	}
-
-	const AUTHENTICATED_LINKS = [
-		{
-			id: '1',
-			url: '/',
-			exact: true,
-			title: t('home-menu'),
-		},
-		{
-			id: '2',
-			url: '/employees',
-			exact: true,
-			title: t('employees-menu'),
-		},
-		{
-			id: '3',
-			url: '/profile',
-			exact: true,
-			title: t('profile-menu'),
-		},
-		{
-			id: '4',
-			title: t('logout-menu'),
-		}
-	];
 
 	const NOT_AUTHENTICATED_LINKS = [
 		{

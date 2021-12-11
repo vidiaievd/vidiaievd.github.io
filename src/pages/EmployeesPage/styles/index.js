@@ -11,3 +11,4 @@ export {StyledWrapperCards} from './StyledWrapperCards';
 export {StyledWrapperLetterList} from './StyledWrapperLetterList';
 export {StyledTitleLetter} from './StyledTitleLetter';
 export {StyledEmptyCard} from './StyledEmptyCard';
+export {StyledAnimation} from './StyledAnimation';

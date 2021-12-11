@@ -8,11 +8,11 @@ import { selectBirthdays } from "../../store/birthdaySlice";
 import { UserCard, Loader, Error } from "../../components";
 import { alphabet, setMonthList, birthdayListByMonth, employeesByAlphabet } from "../../utils";
 import {
-	StyledWrapperPage, 
-	StyledEmployeesTitle, 
-	StyledEmployeesList, 
-	StyledBirthdaysTitle, 
-	StyledBirthdaysList, 
+	StyledWrapperPage,
+	StyledEmployeesTitle,
+	StyledEmployeesList,
+	StyledBirthdaysTitle,
+	StyledBirthdaysList,
 	StyledTitle,
 	StyledMonthList,
 	StyledMonthItem,
@@ -42,8 +42,8 @@ export const EmployeesPage = () => {
 					? (
 						<StyledWrapperLetterList key={shortid.generate()}>
 							<StyledTitleLetter>{letter}</StyledTitleLetter>
-							{employeesWithLetter[letter].map(employeeData => (
-								<UserCard key={shortid.generate()} employee={employeeData}/>
+							{employeesWithLetter[letter].map((employeeData, i) => (
+								<UserCard key={shortid.generate()} employee={employeeData} i={i} />
 							))}
 						</StyledWrapperLetterList>
 					) : (
@@ -78,34 +78,34 @@ export const EmployeesPage = () => {
 			<StyledEmployeesList>
 				{memoizedEmployeesList}
 			</StyledEmployeesList>
-			<StyledBirthdaysTitle>
-				<StyledTitle as="h2">{t('birthdays-title')}</StyledTitle>
-			</StyledBirthdaysTitle>
-			<StyledBirthdaysList>
-				{Object.keys(birthdaysList).length ?
-					monthList.map((month) => (
-						<StyledMonthList key={shortid.generate()}>
-							<StyledTitleItem underline>{t(month.toLowerCase())}</StyledTitleItem>
-							<ul>
-								{birthdaysList[month]?.length ?
-									birthdaysList[month].map(
-										employee => <StyledMonthItem key={shortid.generate()}>
-											{`${employee.lastName} ${employee.firstName} - `}
-											<FormattedDate value={employee.dob}	day='2-digit'/> {' '}
-											<FormattedDate value={employee.dob}	month='long'/> {', '}
-											<FormattedDate value={employee.dob} year='numeric' />{t('year')}
-										</StyledMonthItem>
-									)
-									:
-									<StyledMonthItem>{t('no-employees')}</StyledMonthItem>
-								}
-							</ul>
-						</StyledMonthList>
-					))
-					:
-					<StyledTitleItem>{t('list-empty')}</StyledTitleItem>
-				}
-			</StyledBirthdaysList>
+				<StyledBirthdaysTitle>
+					<StyledTitle as="h2">{t('birthdays-title')}</StyledTitle>
+				</StyledBirthdaysTitle>
+				<StyledBirthdaysList>
+					{Object.keys(birthdaysList).length ?
+						monthList.map((month) => (
+							<StyledMonthList key={shortid.generate()}>
+								<StyledTitleItem underline>{t(month.toLowerCase())}</StyledTitleItem>
+								<ul>
+									{birthdaysList[month]?.length ?
+										birthdaysList[month].map(
+											employee => <StyledMonthItem key={shortid.generate()}>
+												{`${employee.lastName} ${employee.firstName} - `}
+												<FormattedDate value={employee.dob} day='2-digit' /> {' '}
+												<FormattedDate value={employee.dob} month='long' /> {', '}
+												<FormattedDate value={employee.dob} year='numeric' />{t('year')}
+											</StyledMonthItem>
+										)
+										:
+										<StyledMonthItem>{t('no-employees')}</StyledMonthItem>
+									}
+								</ul>
+							</StyledMonthList>
+						))
+						:
+						<StyledTitleItem>{t('list-empty')}</StyledTitleItem>
+					}
+				</StyledBirthdaysList>
 		</StyledWrapperPage>
 	);
 };

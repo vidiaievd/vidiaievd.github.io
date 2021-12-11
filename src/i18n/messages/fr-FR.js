@@ -22,7 +22,7 @@ export default {
 		'test-task': 'Tâche de test',
 		'company-name': 'Yalantis',
 		'react': 'React',
-		'school': "L'école",
+		'school': "School",
 
 		'january': 'Janvier',
 		'february': 'Février',

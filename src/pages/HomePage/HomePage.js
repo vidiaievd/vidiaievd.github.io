@@ -1,5 +1,5 @@
 import t from '../../i18n/translate';
-import {StyledWrapper, StyledTitle, StyledParagraph} from './styles'
+import { StyledWrapper, StyledTitle, StyledParagraph} from './styles'
 
 export const HomePage = () => {
 	return (

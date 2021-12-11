@@ -1,12 +1,20 @@
 import PT from "prop-types";
-// import { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import t from '../../i18n/translate';
 import { addBirthday, removeBirthday, selectIds } from "../../store/birthdaySlice";
 import {StyledUserCard, StyledTitleCard, StyledLabel} from './styles';
 
-export const UserCard = ({ employee }) => {
-    // const [animation, setAnimation] = useState(false);
+export const UserCard = ({ employee, i }) => {
+    const [visible, setVisible] = useState(false);
+    const ref = useRef(null);
+    useEffect(() => {
+        if (ref) {
+            setTimeout(() => {
+                setVisible(true)
+            }, i * 100)
+        }
+    }, [])
     const dispatch = useDispatch();
     const Ids = useSelector(selectIds);
 
@@ -20,12 +28,13 @@ export const UserCard = ({ employee }) => {
 
     const isChecked = (Ids.includes(employee.id));
 
+    
+
     return (
         <StyledUserCard
+            ref={ref}
             isCheck={isChecked}
-            // onClick={() => setAnimation(true)}
-            // onAnimationEnd={() => setAnimation(false)}
-            // animation={animation}
+            visible={visible}
         >
 
             <StyledTitleCard isCheck={isChecked}>
