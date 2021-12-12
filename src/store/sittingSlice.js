@@ -7,14 +7,14 @@ const sittingSlice = createSlice({
         theme: JSON.parse(localStorage.getItem('theme')) || 'light',
     },
     reducers: {
-        setLanguage: {
-            reducer: (state, {payload}) => {
+        language: {
+            reducer: (state, { payload }) => {
                 state.language = payload;
                 localStorage.setItem('language', JSON.stringify(payload));
             },
         },
-        setTheme: {
-            reducer: (state, {payload}) => {
+        theme: {
+            reducer: (state, { payload }) => {
                 state.theme = payload;
                 localStorage.setItem('theme', JSON.stringify(payload));
             },
@@ -23,6 +23,6 @@ const sittingSlice = createSlice({
     extraReducers: {},
 });
 
-export const { setLanguage, setTheme } = sittingSlice.actions;
+export const reducers = sittingSlice.actions;
 
 export default sittingSlice.reducer;
