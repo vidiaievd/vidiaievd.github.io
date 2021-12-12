@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const sittingSlice = createSlice({
     name: "sitting",
     initialState: {
-        language: JSON.parse(localStorage.getItem('language')) || 'English',
+        language: JSON.parse(localStorage.getItem('language')) || 'en-US',
         theme: JSON.parse(localStorage.getItem('theme')) || 'light',
     },
     reducers: {
