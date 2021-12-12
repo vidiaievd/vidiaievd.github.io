@@ -1,11 +1,25 @@
-import {Link} from 'react-router-dom'
+import { Link } from '../../components';
+import {
+	StyledWrapper,
+	StyledImageWrapper,
+	StyledTitle,
+	StyledParagraph,
+	StyledLink,
+	StyledWrapperContent,
+} from './styles'
 
 export const NotFoundPage = () => {
 	return (
-		<div>
-			<p>NotFoundPage</p>
-			<Link to="/employees">Test task click here</Link>
-		</div>
+		<StyledWrapper>
+			<StyledWrapperContent>
+				<StyledImageWrapper />
+				<StyledTitle> <h1>404</h1></StyledTitle>
+				<StyledParagraph><p>Ooops... It seems you lost</p></StyledParagraph>
+				<StyledLink>
+					<Link to="/">Go back home</Link>
+				</StyledLink>
+			</StyledWrapperContent>
+
+		</StyledWrapper>
 	)
 }
-

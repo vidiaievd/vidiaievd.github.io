@@ -6,6 +6,7 @@ export const lightTheme = {
 		primary: '#f3f4f8',
 		secondary: '#fffff0',
 		card: '#e8e8e8',
+		invert: '#3a3a3a',
 		checkCard: '#b8b8ff',
 		red: '#f07c7c',
 		headerLine: 'linear-gradient(45deg,#f3f4f8, #333, #f3f4f8)',
@@ -13,6 +14,7 @@ export const lightTheme = {
 	fontColor: {
 		primary: '#3a3a3a',
 		secondary: '#2e2e2e',
+		invert: '#eaeaea',
 		card: '#3a3a3a',
 		black: '#000000',
 	},

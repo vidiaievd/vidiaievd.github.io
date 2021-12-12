@@ -6,6 +6,7 @@ export const darkTheme = {
 		primary: '#333333',
 		secondary: '#707070',
 		card: '#e8e8e8',
+		invert: '#eaeaea',
 		checkCard: '#b8b8ff',
 		red: '#f07c7c',
 		headerLine: 'linear-gradient(45deg, #333, #f3f4f8, #333)',
@@ -13,6 +14,7 @@ export const darkTheme = {
 	fontColor: {
 		primary: '#eaeaea',
 		secondary: '#fffff0',
+		invert: '#3a3a3a',
 		card:'#3a3a3a',
 		black: '#000000',
 	},
@@ -29,5 +31,6 @@ export const darkTheme = {
 		card: 'rgba(0, 0, 0, 0.5)',
 		checkCard: 'rgba(0, 0, 0, 0.8)',
 		red: '5px 5px 5px rgba(0, 0, 0, 0.4)',
+		link: '0 0 1px #fff, 0 0 7px #fff',
 	}
 };
