@@ -1,9 +1,11 @@
 import {NavLink} from 'react-router-dom';
 import t from '../../i18n/translate';
-import {Logo, Link, Switcher, LanguageSwitcher} from '../../components';
+import {Logo, Link, Switcher} from '../../components';
+import {LOCALES} from '../../i18n';
+import {THEME_NAME} from '../../theme';
 import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkWrapper} from './styles'
 
-export const Header = ({ changeTheme }) => {
+export const Header = () => {
 	const handleLogout = () => {
 		console.log('[ logout :) ]')
 	}
@@ -35,8 +37,8 @@ export const Header = ({ changeTheme }) => {
 			<StyledWrapperHeader>
 				<Logo />
 				<StyledNavBar>
-					<LanguageSwitcher />
-					<Switcher changeTheme={changeTheme} />
+					<Switcher type='theme' list={THEME_NAME}/>
+					<Switcher type='language' list={LOCALES}/>
 					{links.map(({ id, url, exact, title }) => (
 						<StyledLinkWrapper key={id}>
 							{

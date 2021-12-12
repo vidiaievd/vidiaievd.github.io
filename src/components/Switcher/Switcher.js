@@ -1,23 +1,22 @@
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StyledSwitcher } from './styles';
-import { THEME_NAME } from '../../theme';
-import {setTheme} from '../../store/sittingSlice';
+import { reducers } from '../../store/sittingSlice';
 
-export const Switcher = () => {
+export const Switcher = ({type, list}) => {
 	const dispatch = useDispatch();
-	// const currentTheme = useSelector(({sitting}) => sitting.theme);
+	const currentValue = useSelector(({ sitting }) => sitting[type]);
 
-	const handleChangeLanguage = event => {
-		dispatch(setTheme(event.target.value));
+	const handleChangeValue = event => {
+		dispatch(reducers[type](event.target.value));
 	}
 
-	// const current = Object.values(THEME_NAME).find(theme => theme === currentTheme);
+	const current = Object.values(list).find(item => item === currentValue);
 
-		return (
-		<StyledSwitcher onChange={handleChangeLanguage}>
-			{Object.keys(THEME_NAME).map(theme => (
-				<option value={THEME_NAME[theme]} key={THEME_NAME[theme]}>{THEME_NAME[theme]}</option>
-			))}
-		</StyledSwitcher>
+	return (
+		<StyledSwitcher onChange={handleChangeValue} defaultValue={current}>
+		 	{Object.keys(list).map(item => (
+		 		<option value={list[item]} key={list[item]}>{item}</option>
+		 	))}
+		 </StyledSwitcher>
 	)
 }
