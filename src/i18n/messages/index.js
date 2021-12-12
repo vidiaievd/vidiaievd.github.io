@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import en from './en-US';
 import de from './de-DE';
 import fr from './fr-FR';

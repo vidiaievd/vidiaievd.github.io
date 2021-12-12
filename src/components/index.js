@@ -4,3 +4,5 @@ export { Error } from './Error';
 export { Link } from './Link';
 export { Logo } from './Logo';
 export { Switcher } from './Switcher';
+export { Header } from './Header';
+export { Footer } from './Footer';

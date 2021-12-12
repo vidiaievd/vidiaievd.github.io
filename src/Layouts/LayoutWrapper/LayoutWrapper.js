@@ -1,5 +1,5 @@
 import PT from 'prop-types';
-import { Header, Footer } from '../';
+import { Header, Footer } from '../../components';
 import { StyledLayoutWrapper, StyledWrapperContent } from './styles';
 
 export const LayoutWrapper = ({ children }) => {
@@ -15,5 +15,5 @@ export const LayoutWrapper = ({ children }) => {
 }
 
 LayoutWrapper.propTypes = {
-
+	children: PT.node.isRequired
 }

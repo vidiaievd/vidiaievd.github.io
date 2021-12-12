@@ -11,10 +11,8 @@ import {
 	StyledWrapperPage,
 	StyledEmployees,
 	StyledBirthdays,
-	StyledBirthdaysList,
 	StyledMonthList,
 	StyledTitle,
-	StyledTitleWrapper,
 	StyledMonthItem,
 	StyledTitleItem,
 	StyledWrapperCards,
@@ -56,6 +54,7 @@ export const EmployeesPage = () => {
 					)
 			))}
 		</StyledWrapperCards>
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	), [employees]);
 
 	useEffect(() => {
