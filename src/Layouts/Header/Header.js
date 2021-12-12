@@ -3,40 +3,13 @@ import t from '../../i18n/translate';
 import {Logo, Link, Switcher} from '../../components';
 import {LOCALES} from '../../i18n';
 import {THEME_NAME} from '../../theme';
+import {NAVIGATION} from '../../settings';
 import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkWrapper} from './styles'
 
 export const Header = () => {
 	const handleLogout = () => {
 		console.log('[ logout :) ]')
 	}
-
-	const NOT_AUTHENTICATED_LINKS = [
-		{
-			id: '1',
-			url: '/',
-			exact: true,
-			title: t('home-menu'),
-		},
-		{
-			id: '2',
-			url: '/employees',
-			exact: true,
-			title: t('employees-menu'),
-		},
-		{
-			id: '3',
-			url: '/charts',
-			exact: true,
-			title: t('charts-menu'),
-		},
-		{
-			id: '5',
-			url: '/auth',
-			title: t('auth-menu'),
-		}
-	];
-
-	const links = NOT_AUTHENTICATED_LINKS;
 
 	return (
 		<StyledHeader>
@@ -45,16 +18,16 @@ export const Header = () => {
 				<StyledNavBar>
 					<Switcher type='theme' list={THEME_NAME}/>
 					<Switcher type='language' list={LOCALES}/>
-					{links.map(({ id, url, exact, title }) => (
+					{NAVIGATION.map(({ id, url, translateKey }) => (
 						<StyledLinkWrapper key={id}>
 							{
 								url ? (
 									<Link as={NavLink} to={url} >
-										{title}
+										{t(translateKey)}
 									</Link>
 								) : (
 									<Link  onClick={handleLogout}>
-										{title}
+											{t(translateKey)}
 									</Link>
 								)}
 						</StyledLinkWrapper>

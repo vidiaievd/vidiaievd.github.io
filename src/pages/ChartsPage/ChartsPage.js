@@ -75,6 +75,9 @@ export const ChartsPage = () => {
 					colors: palette.fontColor.primary,
 				},
 			},
+		},
+		tooltip: {
+			theme: palette.type,
 		}
 	}), [palette]);
 

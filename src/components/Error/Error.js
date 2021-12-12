@@ -1,6 +1,6 @@
 import PT from "prop-types";
-import {Link} from 'react-router-dom'
-import './style.scss'
+import {Link} from 'react-router-dom';
+import './style.scss';
 
 export const Error = ({message}) => {
 	return (

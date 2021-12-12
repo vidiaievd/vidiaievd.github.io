@@ -9,12 +9,10 @@ export const UserCard = ({ employee, i }) => {
     const [visible, setVisible] = useState(false);
     const ref = useRef(null);
     useEffect(() => {
-        if (ref) {
-            setTimeout(() => {
+             const animate = setTimeout(() => {
                 setVisible(true)
-            }, i * 100)
-        }
-        return setVisible(null);
+            }, i * 100);
+            return () => clearTimeout(animate);
     }, [i, ref])
     const dispatch = useDispatch();
     const Ids = useSelector(selectIds);
