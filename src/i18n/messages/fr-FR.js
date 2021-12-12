@@ -13,6 +13,7 @@ export default {
 
 		'home-menu': 'Accueil',
 		'employees-menu': 'Des employés',
+		'charts-menu': 'Graphiques',
 		'profile-menu': 'Profil',
 		'auth-menu': 'Auth',
 		'logout-menu': 'Logout',
@@ -37,5 +38,7 @@ export default {
 		'november': 'Novembre',
 		'december': 'Décembre',
 		'year': ' an',
+
+		'title-charts': "Anniversaires des employés par mois",
 	}
 }

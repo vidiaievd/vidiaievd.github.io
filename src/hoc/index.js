@@ -1,1 +1,1 @@
-export {BarmTheme} from './BarmTheme';
+export {AppTheme} from './AppTheme';

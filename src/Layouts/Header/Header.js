@@ -24,6 +24,12 @@ export const Header = () => {
 			title: t('employees-menu'),
 		},
 		{
+			id: '3',
+			url: '/charts',
+			exact: true,
+			title: t('charts-menu'),
+		},
+		{
 			id: '5',
 			url: '/auth',
 			title: t('auth-menu'),
