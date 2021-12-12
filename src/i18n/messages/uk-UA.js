@@ -13,6 +13,7 @@ export default {
 
 		'home-menu': 'Головна',
 		'employees-menu': 'Співробітники',
+		'charts-menu': 'Діаграми',
 		'profile-menu': 'Профіль',
 		'auth-menu': 'Auth',
 		'logout-menu': 'Logout',
@@ -37,5 +38,7 @@ export default {
 		'november': 'Листопад',
 		'december': 'Грудень',
 		'year': ' рік',
+
+		'title-charts': "Дні народження працівників за місяцями",
 	}
 }

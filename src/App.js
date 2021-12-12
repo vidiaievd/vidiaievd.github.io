@@ -1,8 +1,8 @@
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { I18Provider } from './i18n';
-import { BarmTheme } from './hoc'
-import { EmployeesPage, NotFoundPage, HomePage } from './pages';
+import { AppTheme } from './hoc'
+import { EmployeesPage, NotFoundPage, HomePage, ChartsPage } from './pages';
 import { LayoutWrapper } from './Layouts';
 import store from './store/store';
 import { GlobalStyles } from './styles';
@@ -13,16 +13,17 @@ export const App = () => {
 		<Provider store={store}>
 			<HashRouter>
 				<I18Provider>
-					<BarmTheme>
+					<AppTheme>
 						<GlobalStyles />
 						<LayoutWrapper >
 							<Routes>
 								<Route path="/" element={<HomePage />} />
 								<Route path="/employees" element={<EmployeesPage />} />
+								<Route path="/charts" element={<ChartsPage />} />
 								<Route path="*" element={<NotFoundPage />} />
 							</Routes>
 						</LayoutWrapper>
-					</BarmTheme>
+					</AppTheme>
 				</I18Provider>
 			</HashRouter>
 		</Provider>

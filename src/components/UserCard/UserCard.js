@@ -14,7 +14,8 @@ export const UserCard = ({ employee, i }) => {
                 setVisible(true)
             }, i * 100)
         }
-    }, [])
+        return setVisible(null);
+    }, [i, ref])
     const dispatch = useDispatch();
     const Ids = useSelector(selectIds);
 

@@ -13,6 +13,7 @@ export default {
 
 		'home-menu': 'Home',
 		'employees-menu': 'Employees',
+		'charts-menu': 'Charts',
 		'profile-menu': 'Profile',
 		'auth-menu': 'Auth',
 		'logout-menu': 'Logout',
@@ -37,5 +38,7 @@ export default {
 		'november': 'November',
 		'december': 'December',
 		'year': ' year',
+
+		'title-charts': "Employees' birthdays by month",
 	}
 }

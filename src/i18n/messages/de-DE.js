@@ -13,6 +13,7 @@ export default {
 
 		'home-menu': 'Heim',
 		'employees-menu': 'Des employés',
+		'charts-menu': 'Diagramme',
 		'profile-menu': 'Profil',
 		'auth-menu': 'Auth',
 		'logout-menu': 'Logout',
@@ -37,5 +38,7 @@ export default {
 		'november': 'November',
 		'december': 'Dezember',
 		'year': ' Jahr',
+
+		'title-charts': "Geburtstage der Mitarbeiter nach Monat",
 	}
 }
