@@ -1,4 +1,4 @@
-import { createEntityAdapter, createSlice, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getEmployees = createAsyncThunk(
