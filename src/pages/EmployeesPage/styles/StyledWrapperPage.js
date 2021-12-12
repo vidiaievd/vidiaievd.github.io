@@ -7,6 +7,5 @@ export const StyledWrapperPage = styled.article`
     grid-template-rows: auto;
     gap: 0 1rem;
     grid-template-areas:
-        "employeesTitle birthdaysTitle"
-        "employeesList birthdaysList";
+        "employees birthdays";
 `;

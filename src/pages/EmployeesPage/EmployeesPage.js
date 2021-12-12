@@ -9,12 +9,12 @@ import { UserCard, Loader, Error } from "../../components";
 import { alphabet, setMonthList, birthdayListByMonth, employeesByAlphabet } from "../../utils";
 import {
 	StyledWrapperPage,
-	StyledEmployeesTitle,
-	StyledEmployeesList,
-	StyledBirthdaysTitle,
+	StyledEmployees,
+	StyledBirthdays,
 	StyledBirthdaysList,
-	StyledTitle,
 	StyledMonthList,
+	StyledTitle,
+	StyledTitleWrapper,
 	StyledMonthItem,
 	StyledTitleItem,
 	StyledWrapperCards,
@@ -72,16 +72,12 @@ export const EmployeesPage = () => {
 
 	return (
 		<StyledWrapperPage>
-			<StyledEmployeesTitle>
+			<StyledEmployees>
 				<StyledTitle>{t('employees-title')}</StyledTitle>
-			</StyledEmployeesTitle>
-			<StyledEmployeesList>
 				{memoizedEmployeesList}
-			</StyledEmployeesList>
-				<StyledBirthdaysTitle>
+			</StyledEmployees>
+			<StyledBirthdays>
 					<StyledTitle as="h2">{t('birthdays-title')}</StyledTitle>
-				</StyledBirthdaysTitle>
-				<StyledBirthdaysList>
 					{Object.keys(birthdaysList).length ?
 						monthList.map((month) => (
 							<StyledMonthList key={shortid.generate()}>
@@ -105,7 +101,7 @@ export const EmployeesPage = () => {
 						:
 						<StyledTitleItem>{t('list-empty')}</StyledTitleItem>
 					}
-				</StyledBirthdaysList>
+			</StyledBirthdays>
 		</StyledWrapperPage>
 	);
 };
