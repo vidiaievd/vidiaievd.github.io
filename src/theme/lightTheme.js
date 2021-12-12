@@ -1,4 +1,5 @@
 export const lightTheme = {
+	type: 'light',
 	bgGradient: {
 		primary: 'linear-gradient(to right, rgba(243, 244, 248, 0), rgba(243, 244, 248, 1)), linear-gradient(to top, rgba(243, 244, 248, 0), 90%, rgba(243, 244, 248, 1))',
 	},

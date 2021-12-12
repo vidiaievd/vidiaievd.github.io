@@ -1,7 +1,7 @@
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { I18Provider } from './i18n';
-import { AppTheme } from './hoc'
+import { AppTheme } from './settings'
 import { EmployeesPage, NotFoundPage, HomePage, ChartsPage } from './pages';
 import { LayoutWrapper } from './Layouts';
 import store from './store/store';

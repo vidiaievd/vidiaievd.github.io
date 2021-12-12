@@ -1,4 +1,5 @@
 export const darkTheme = {
+	type: 'dark',
 	bgGradient: {
 		primary: 'linear-gradient(to right, rgba(51, 51, 51, 0), rgba(51, 51, 51, 1)), linear-gradient(to top, rgba(51, 51, 51, 0), 90%, rgba(51, 51, 51, 1))',
 	},
