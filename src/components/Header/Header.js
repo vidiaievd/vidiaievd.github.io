@@ -1,3 +1,4 @@
+import {forwardRef} from 'react';
 import {NavLink} from 'react-router-dom';
 import t from '../../i18n/translate';
 import {Logo, Link, Switcher} from '../../components';
@@ -6,13 +7,13 @@ import {THEME_NAME} from '../../theme';
 import {NAVIGATION} from '../../settings';
 import {StyledHeader, StyledWrapperHeader, StyledLine, StyledNavBar, StyledLinkWrapper} from './styles'
 
-export const Header = () => {
+export const Header = forwardRef((props, ref) => {
 	const handleLogout = () => {
 		console.log('[ logout :) ]')
 	}
 
 	return (
-		<StyledHeader>
+		<StyledHeader ref={ref}>
 			<StyledWrapperHeader>
 				<Logo />
 				<StyledNavBar>
@@ -37,4 +38,4 @@ export const Header = () => {
 			<StyledLine />
 		</StyledHeader>
 	)
-}
+});

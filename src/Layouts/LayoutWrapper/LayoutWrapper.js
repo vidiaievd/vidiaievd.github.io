@@ -1,11 +1,17 @@
 import PT from 'prop-types';
-import { Header, Footer } from '../../components';
-import { StyledLayoutWrapper, StyledWrapperContent } from './styles';
+import {useInView} from 'react-intersection-observer';
+import {Header, Footer, ToTopButton} from '../../components';
+import {StyledLayoutWrapper, StyledWrapperContent} from './styles';
 
 export const LayoutWrapper = ({ children }) => {
+	const { ref, inView } = useInView({
+		threshold: 0
+	});
+
 	return (
 		<StyledLayoutWrapper>
-			<Header />
+			<Header ref={ref} isFixed={!inView}/>
+			<ToTopButton isVisible={!inView}/>
 			<StyledWrapperContent>
 				{children}
 			</StyledWrapperContent>
