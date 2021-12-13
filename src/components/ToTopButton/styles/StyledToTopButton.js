@@ -7,7 +7,7 @@ export const StyledToTopButton = styled.button`
 	display: flex;
 	position: fixed;
 	bottom: 1.5rem;
-	right: ${props => props.isVisible ? '1.5rem' : '-2rem'};
+	right: ${props => props.isVisible ? '1.5rem' : '-2.5rem'};
 	height: ${size};
 	width: ${size};
 	background: center / 50% no-repeat url(${ArrowUpIcon}) ${props => props.theme.bgColor.primary};
