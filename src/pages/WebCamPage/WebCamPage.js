@@ -5,7 +5,8 @@ function CameraCapture() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [devices, setDevices] = useState([]);
-  const [error, setError] = useState('No errors')
+  const [error, setError] = useState('No errors');
+  const [info, setInfo] = useState('');
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [mirrorImage, setMirrorImage] = useState(false);
 
@@ -43,6 +44,7 @@ function CameraCapture() {
 
   const switchCamera = (deviceId) => {
     const selectedCamera = devices.find(device => device.deviceId === deviceId);
+    setInfo(selectedCamera)
     setSelectedDevice(selectedCamera);
   };
 
@@ -69,6 +71,7 @@ function CameraCapture() {
         <h1>Сделать фотографию</h1>
         <h3>{error}</h3>
       </div>
+        <h3>{`Info: ${JSON.stringify(info)}`}</h3>
       <video
         ref={videoRef}
         width="640"
@@ -88,7 +91,13 @@ function CameraCapture() {
       <canvas ref={canvasRef} width="640" height="480"></canvas>
       <div>
         {devices.map(device => (
-          <button key={device.deviceId} onClick={() => switchCamera(device.deviceId)}>
+          <button
+            key={device.deviceId}
+            onClick={() => {
+              setError(device.label);
+              switchCamera(device.deviceId);
+            }}
+          >
             {device.label || `Камера ${device.deviceId}`}
           </button>
         ))}
