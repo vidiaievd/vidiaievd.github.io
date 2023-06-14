@@ -17,6 +17,7 @@ export default {
 		'profile-menu': 'Profile',
 		'auth-menu': 'Auth',
 		'logout-menu': 'Logout',
+		'webcam': 'Webcam',
 
 		'footer-text': 'All Rights Reserved',
 
