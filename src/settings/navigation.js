@@ -22,8 +22,8 @@ export const NAVIGATION = [
 	},
 	{
 		id: '5',
-		url: '/auth',
-		title: 'Auth',
-		translateKey: 'auth-menu',
+		url: '/webcam',
+		title: 'WebCam',
+		translateKey: 'webcam',
 	}
 ];
