@@ -4,6 +4,7 @@ function CameraCapture() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [devices, setDevices] = useState([]);
+  const [error, setError] = useState('No errors')
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [mirrorImage, setMirrorImage] = useState(false);
 
@@ -30,6 +31,7 @@ function CameraCapture() {
       videoRef.current.srcObject = stream;
     } catch (error) {
       console.error('Ошибка доступа к камере:', error);
+      setError(error)
     }
   };
 
@@ -57,7 +59,10 @@ function CameraCapture() {
 
   return (
     <div>
-      <h1>Сделать фотографию</h1>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <h1>Сделать фотографию</h1>
+        <h3>{error}</h3>
+      </div>
       <video
         ref={videoRef}
         width="640"
@@ -65,6 +70,11 @@ function CameraCapture() {
         autoPlay
         style={{ transform: mirrorImage ? 'scaleX(-1)' : 'none' }}
       ></video>
+      <div>
+        {devices.map(device => (
+          <span key={device.deviceId}>{JSON.stringify(device, null, 2)}</span>
+        ))}
+      </div>
       <button onClick={capturePhoto}>Сделать фото</button>
       <button onClick={toggleMirrorImage}>
         {mirrorImage ? 'Отключить отзеркаливание' : 'Включить отзеркаливание'}
