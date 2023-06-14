@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 
 function CameraCapture() {
   const videoRef = useRef(null);
@@ -13,7 +14,12 @@ function CameraCapture() {
     navigator.mediaDevices.enumerateDevices().then(devices => {
       const videoDevices = devices.filter(device => device.kind === 'videoinput');
       setDevices(videoDevices);
-      setSelectedDevice(videoDevices[0]);
+      if(isMobile) {
+        const backCamera = videoDevices.find((device) => device.label.toLocaleLowerCase() === 'back')
+        setSelectedDevice(backCamera);
+      } else {
+        setSelectedDevice(videoDevices[0]);
+      }
     });
   }, []);
 
@@ -92,3 +98,5 @@ function CameraCapture() {
 }
 
 export default CameraCapture;
+
+
