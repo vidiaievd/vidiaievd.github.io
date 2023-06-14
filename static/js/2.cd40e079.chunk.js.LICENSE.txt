@@ -5,8 +5,8 @@ object-assign
 */
 
 /*!
- * ApexCharts v3.41.0
- * (c) 2018-2023 ApexCharts
+ * ApexCharts v3.32.0
+ * (c) 2018-2021 ApexCharts
  * Released under the MIT License.
  */
 
