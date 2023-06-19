@@ -1,56 +1,63 @@
 import { useRef, useState, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
+const videoWidth = '640px';
+const videoHeight = '480px';
+
 function CameraCapture() {
   const videoRef = useRef(null);
-  const canvasRef = useRef(null);
   const [devices, setDevices] = useState([]);
   const [error, setError] = useState('No errors');
-  const [info, setInfo] = useState('');
-  const [selectedDevice, setSelectedDevice] = useState(null);
   const [mirrorImage, setMirrorImage] = useState(false);
+  const [image, setImage] = useState(null);
+  const [mode, setMode] = useState(isMobile ? 'environment' : 'user');
 
   useEffect(() => {
-    // Запрашиваем доступные устройства (камеры)
     navigator.mediaDevices.enumerateDevices().then(devices => {
       const videoDevices = devices.filter(device => device.kind === 'videoinput');
       setDevices(videoDevices);
-      if(isMobile) {
-        const backCamera = videoDevices.find((device) => device.label.toLocaleLowerCase() === 'back')
-        setSelectedDevice(backCamera);
-      } else {
-        setSelectedDevice(videoDevices[0]);
-      }
     });
   }, []);
 
   useEffect(() => {
-    if (selectedDevice) {
-      startCamera();
+    startCamera(mode);
+  }, [mode]);
+   
+  const stopCamera = () => {
+    const mediaStream = videoRef.current.srcObject;
+    if (mediaStream && mediaStream.getTracks) {
+      mediaStream.getTracks().forEach((track) => {
+        track.stop();
+      });
     }
-  }, [selectedDevice]);
+  };
 
-  const startCamera = async () => {
+  const startCamera = async (initialMode) => {
+    stopCamera()
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { deviceId: selectedDevice.deviceId }
+        video: { 
+          facingMode: {ideal: initialMode} 
+        }
       });
       videoRef.current.srcObject = stream;
     } catch (error) {
-      console.error('Ошибка доступа к камере:', error);
       setError(error)
     }
   };
 
-  const switchCamera = (deviceId) => {
-    const selectedCamera = devices.find(device => device.deviceId === deviceId);
-    setInfo(selectedCamera)
-    setSelectedDevice(selectedCamera);
+  const switchCamera = () => {
+    setMode(prevState => prevState === 'user' ? 'environment' : 'user');
   };
+ 
 
   const capturePhoto = () => {
     const video = videoRef.current;
-    const canvas = canvasRef.current;
+    const canvas = document.createElement('canvas');
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    canvas.width = width;
+    canvas.height = height;
     const context = canvas.getContext('2d');
 
     if (mirrorImage) {
@@ -58,7 +65,8 @@ function CameraCapture() {
       context.scale(-1, 1);
     }
 
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    context.drawImage(video, 0, 0, width, height);
+    setImage(canvas.toDataURL('image/jpeg'))
   };
 
   const toggleMirrorImage = () => {
@@ -71,37 +79,24 @@ function CameraCapture() {
         <h1>Сделать фотографию</h1>
         <h3>{error}</h3>
       </div>
-        <h3>{`Info: ${JSON.stringify(info)}`}</h3>
       <video
         ref={videoRef}
-        width="640"
-        height="480"
+        width={videoWidth}
+        height={videoHeight}
         autoPlay
         style={{ transform: mirrorImage ? 'scaleX(-1)' : 'none' }}
-      ></video>
+      />
       <div>
-        {devices.map(device => (
-          <span key={device.deviceId}>{JSON.stringify(device, null, 2)}</span>
-        ))}
       </div>
       <button onClick={capturePhoto}>Сделать фото</button>
       <button onClick={toggleMirrorImage}>
         {mirrorImage ? 'Отключить отзеркаливание' : 'Включить отзеркаливание'}
       </button>
-      <canvas ref={canvasRef} width="640" height="480"></canvas>
       <div>
-        {devices.map(device => (
-          <button
-            key={device.deviceId}
-            onClick={() => {
-              setError(device.label);
-              switchCamera(device.deviceId);
-            }}
-          >
-            {device.label || `Камера ${device.deviceId}`}
-          </button>
-        ))}
+        {devices?.length > 1 && <button style={{height: '50px'}} onClick={switchCamera}>switch camera</button>}
+        <button style={{height: '50px'}} onClick={stopCamera}>Stop camera</button>
       </div>
+      {image && <img src={image} />}
     </div>
   );
 }
